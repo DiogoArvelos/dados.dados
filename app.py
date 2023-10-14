@@ -93,12 +93,14 @@ def index():
     current_hour = int(time.strftime("%H", time.localtime(time.time())))
 
     medias_por_hora = {}
+    medias_por_hora1 = {}
 
     for year in range(current_year, current_year - 1, -1):
         for month in range(1, 13):
             for day in range(1, 32):
                 for hour in range(24):
-                    medias_por_hora[f"{year}-{month:02d}-{day:02d} {hour:02d}:00"] = calcular_media(year, month, day, hour)
+                    medias_por_hora1[f"{year}-{month:02d}-{day:02d} {hour:02d}:00"] = calcular_media(year, month, day, hour)
+                    medias_por_hora = medias_por_hora1
 
     return render_template("index.html", medias_por_hora=medias_por_hora)
 
